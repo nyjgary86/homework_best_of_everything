@@ -48,6 +48,15 @@
     </script>
     <div id="map-canvas"></div>
   </dd>
+
+  <dt>Favorited</dt>
+  <dd>
+    <ul>
+    <% @venue_favorites.each do |favorite| %>
+      <li> <%= Dish.find_by({:id => favorite.dish_id }).name %> (<%= User.find_by({:id => favorite.user_id}).username %>) </li>
+    <% end %>
+    </ul>
+  </dd>
 </dl>
 
 

@@ -5,8 +5,20 @@
 <dl class="dl-horizontal">
   <dt>Name</dt>
   <dd><%= @dish.name %></dd>
+  <br>
 
   <dt>Cuisine</dt>
   <dd><%= Cuisine.find_by(:id => @dish.cuisine_id).name %></dd>
+  <br>
+
+  <dt>Favorited</dt>
+  <dd>
+    <ul>
+    <% @dish_favorites.each do |favorite| %>
+      <li> <%= Venue.find_by({:id => favorite.venue_id}).name %> (<%= User.find_by({:id => favorite.user_id}).username %>)</li>
+    <% end %>
+    </ul>
+  </dd>
+  <br>
 
 </dl>
